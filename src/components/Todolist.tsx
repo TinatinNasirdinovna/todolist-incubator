@@ -9,6 +9,7 @@ export type TaskType = {
 export type PropsType = {
     title: string;
     task: Array<TaskType>;
+    filteredTask: Function
 }
 
 const Todolist = (props: PropsType) => {
@@ -20,9 +21,9 @@ const Todolist = (props: PropsType) => {
                 <button>+</button>
             </div>
             <ul>
-                <li><input type="checkbox" checked={props.task[0].isDone}/><span>{props.task[0].title}</span></li>
-                <li><input type="checkbox" checked={props.task[1].isDone}/><span>{props.task[1].title}</span></li>
-                <li><input type="checkbox" checked={props.task[2].isDone}/><span>{props.task[2].title}</span></li>
+                <li><input type="checkbox" checked={props.task[0].isDone}/><span>{props.task[0].title}</span><button onClick={() => props.filteredTask(props.task[0])}>X</button></li>
+                <li><input type="checkbox" checked={props.task[1].isDone}/><span>{props.task[1].title}</span><button onClick={() => props.filteredTask(props.task[1])}>X</button></li>
+                <li><input type="checkbox" checked={props.task[2].isDone}/><span>{props.task[2].title}</span><button onClick={() => props.filteredTask(props.task[2])}>X</button></li>
             </ul>
         </div>
     );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Todolist, { TaskType } from './components/Todolist';
 
@@ -9,16 +9,17 @@ function App() {
     {id: 3, title: 'React', isDone: false},
   ]
 
-  const task2 = [
-    {id: 1, title: 'Terminator', isDone: true},
-    {id: 2, title: 'XXX', isDone: true},
-    {id: 3, title: 'Jentlmens of fortuna', isDone: false},
-  ]
+  const [filter, setFilter] = useState(task1)
+
+  const filteredTask = (id:number) => {
+    const deletedtask = task1.filter(el => el.id !== id)
+    setFilter(deletedtask)
+  }
 
   return (
     <div className="App">
-      <Todolist title={'What to learn'} task={task1}/>
-      <Todolist title={'Movie'} task={task2}/>
+      <Todolist title={'What to learn'} task={task1} filteredTask={filteredTask}/>
+      
     </div>
   );
 }
