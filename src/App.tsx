@@ -3,22 +3,22 @@ import './App.css';
 import Todolist, { TaskType } from './components/Todolist';
 
 function App() {
-  const task1:Array<TaskType> = [
+ 
+
+  let [filter, setFilter] = useState<Array<TaskType>>([
     {id: 1, title: 'CSS && HTML', isDone: true},
     {id: 2, title: 'JS', isDone: true},
     {id: 3, title: 'React', isDone: false},
-  ]
-
-  const [filter, setFilter] = useState(task1)
+  ])
 
   const filteredTask = (id:number) => {
-    const deletedtask = task1.filter(el => el.id !== id)
-    setFilter(deletedtask)
+    filter = filter.filter(el => el.id !== id)
+    setFilter(filter)
   }
 
   return (
     <div className="App">
-      <Todolist title={'What to learn'} task={task1} filteredTask={filteredTask}/>
+      <Todolist title={'What to learn'} task={filter} filteredTask={filteredTask}/>
       
     </div>
   );
